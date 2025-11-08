@@ -51,7 +51,10 @@ INSTALLED_APPS = [
     'drf_spectacular',
 
     #local apps
+    'authentication',
 ]
+
+AUTH_USER_MODEL = os.getenv('AUTH')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
