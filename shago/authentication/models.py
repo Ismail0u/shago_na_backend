@@ -103,3 +103,35 @@ class User(AbstractBaseUser, PermissionsMixin):
     # for models representation on the amdin interface abd logs
     def __str__(self):
         return f"{self.first_name} {self.last_name} ({self.phone_number})"
+    
+
+#---------------------------------------------
+# Class 3 : OTP ( otp classe for number verification)
+#---------------------------------------------------
+class OTP(models.Model):
+    """
+    Model to store one-Time verification codes (OTP)
+    used for phone/email verifcation or password reset flows.
+    """
+    # Foreign Key linking the OTP to the relevant User.
+    # CASCADE ensures the OTP is deleted if the associated User is deleted.
+    # related_name='otps' allows accessing the codes from the User object (e.g., user.otps.all()).
+    user = models.ForeignKey(User , on_delete=models.CASCADE , related_name='otps')
+
+    code = models.CharField(max_length=6) # The generated OTP code (typically 4 or 6 digits/characters).
+
+    purpose = models.CharField(max_length=50) # The purpose of the code: e.g., 'verification' (for signup), 'password_reset' (for recovery).
+    is_used = models.BooleanField(default=False) # to see if the otp is used or not 
+
+    # The date and time when the code becomes invalid (e.g., 5 minutes from creation).
+    expires_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True) # The creation timestamp (automatically set upon creation).
+
+    class Meta:
+        db_table = 'otps' # the name of the table in the database
+        ordering = ['-created_at'] # default ordering : most recently created first
+
+    
+    def __str__(self):
+        # string representation of the object , usefull for debugging and admin interface
+        return f"OTP {self.code} for {self.user.phone_number} ({self.purpose})"
