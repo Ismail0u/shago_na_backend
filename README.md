@@ -1,12 +1,12 @@
-## 💻 README pour le Dépôt Backend (Django REST API)
+## README pour le Dépôt Backend (Django REST API)
 
-### 🚀 Plateforme SaaS de Gestion Commerciale - Backend
+### Plateforme SaaS de Gestion Commerciale - Backend
 
 Ce dépôt contient le code de l'API REST du projet, propulsé par **Django** et **Django REST Framework (DRF)**. Il gère toute la logique métier, la base de données, l'authentification et les échanges de données avec les applications Web et Mobile.
 
 -----
 
-### 🌟 Technologies Clés
+### Technologies Clés
 
   * **Framework:** Django 5 + Django REST Framework (DRF) 
   * **Langage:** Python
@@ -18,7 +18,7 @@ Ce dépôt contient le code de l'API REST du projet, propulsé par **Django** et
 
 -----
 
-### 📦 Structure des Modules (Django Apps)
+### Structure des Modules (Django Apps)
 
 L'API est organisée en modules clairs pour une meilleure maintenabilité :
 
@@ -32,7 +32,7 @@ L'API est organisée en modules clairs pour une meilleure maintenabilité :
 
 -----
 
-### ⚙️ Démarrage Local (via Docker Compose)
+###  Démarrage Local (via Docker Compose)
 
 1.  **Prérequis:** Assurez-vous d'avoir Docker et Docker Compose installés.
 2.  **Configuration:** Créez un fichier `.env` à la racine du projet pour les variables d'environnement (clés secrètes, configuration PostgreSQL, etc.).
